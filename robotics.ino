@@ -3,7 +3,7 @@
 
 SoftwareSerial BT(3,5); //TX, RX respetively
 String readvoice;
-
+bool nasoka = true;
 void setup() {
   BT.begin(9600);
   Serial.begin(9600);
@@ -22,13 +22,12 @@ void loop() {
   if (readvoice.length() > 0) {
     Serial.println(readvoice);
     
-  if(readvoice == "go forward")
+  if(readvoice == "go forward" || readvoice == "go")
   {
     digitalWrite(6, HIGH);
     digitalWrite(9, LOW);
     digitalWrite(10,HIGH);
     digitalWrite(11,LOW);
-    Serial.println("Works");
   }
   else if(readvoice == "go forward left")
   {
@@ -46,7 +45,7 @@ void loop() {
     digitalWrite(11,LOW);
     delay(2000); 
   }
-  else if(readvoice == "go back")
+  else if(readvoice == "go back" || readvoice == "reverse")
   {
     digitalWrite(6, LOW);
     digitalWrite(9, HIGH);
@@ -54,7 +53,7 @@ void loop() {
     digitalWrite(11,HIGH); 
     delay(2000); 
   }
-  else if(readvoice == "go back left")
+  else if(readvoice == "go back left" || readvoice == "reverse left")
   {
     digitalWrite(6, LOW);
     digitalWrite(9, LOW);
@@ -62,7 +61,7 @@ void loop() {
     digitalWrite(11,HIGH);
     delay(2000);  
   }
-  else if(readvoice == "go back right")
+  else if(readvoice == "go back right" || readvoice == "reverse right")
   {
     digitalWrite(6, LOW);
     digitalWrite(9, HIGH);
